@@ -15,6 +15,26 @@ class SLL:
       print(output.data)
       output = output.next
 
+  def at_end(self, new_data):
+    new_node = Node(new_data)
+    if self.head is None:
+      self.head = new_node
+    else:
+      tail = self.head
+      while tail.next:
+        tail = tail.next
+      tail.next = new_node
+
+  def at_start(self, new_data):
+      new_node = Node(new_data)
+      new_node.next = self.head
+      self.head = new_node
+
+  def at_middle(self, middle_node, new_data):
+      new_data = Node(new_data)
+      new_data.next = middle_node.next
+      middle_node.next = new_data.next
+
 
 list1 = SLL()
 # print(Node("Mon").next)
@@ -30,7 +50,17 @@ print(node2)
 print(list1.head.next)
 print(node1.next)
 
-
 node2.next = node3
 
+list1.at_end("Thurs")
+list1.at_end("Fri")
+
+list2 = SLL()
+
+list2.at_end("Sat")
+list1.at_start("Sun")
+
 list1.printlist()
+list2.printlist()
+
+print(list)
