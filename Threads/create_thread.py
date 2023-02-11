@@ -19,13 +19,13 @@ def evenNumber():
         if x % 2 == 0:
             print(x)
     thread1 = threading.current_thread().getName()
-    print(thread1)
-    threading.current_thread().name = "evenOdd Thread"
+    print("thread1", thread1)
+    threading.current_thread().name = "thread1 updated - evenOdd Thread"
     print(threading.current_thread().getName())
 
 
 a = threading.current_thread().getName()
-print(a)
+print("check name", a)
 
 
 def oddNumber():
