@@ -26,14 +26,28 @@ class SLL:
       tail.next = new_node
 
   def at_start(self, new_data):
-      new_node = Node(new_data)
-      new_node.next = self.head
-      self.head = new_node
+    new_node = Node(new_data)
+    new_node.next = self.head
+    self.head = new_node
 
   def at_middle(self, middle_node, new_data):
-      new_data = Node(new_data)
-      new_data.next = middle_node.next
-      middle_node.next = new_data.next
+    new_data = Node(new_data)
+    new_data.next = middle_node.next
+    middle_node.next = new_data.next
+  
+  def del_node(self, remove_data):
+    curr = self.head
+    if curr:
+      if curr.data == remove_data:
+        self.head = curr.next
+        curr = None
+    else:
+      while curr:
+        prev = curr
+        curr = prev.next
+
+
+
 
 
 list1 = SLL()
@@ -59,8 +73,6 @@ list2 = SLL()
 
 list2.at_end("Sat")
 list1.at_start("Sun")
-
+list1.del_node("Mon")
 list1.printlist()
 list2.printlist()
-
-print(list)
