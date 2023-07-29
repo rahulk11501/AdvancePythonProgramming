@@ -40,7 +40,7 @@ class SLL:
     head_val = self.head
     if head_val.data == remove_data:
       self.head = head_val.next
-      head_val = None
+      del head_val
       return
     while head_val and head_val.data:
       print("reached", head_val.data)
@@ -51,7 +51,15 @@ class SLL:
       
     if prev:
       prev.next = head_val.next
-      head_val=None
+      del head_val
+    
+  def list_len(self):
+    curr = self.head
+    count = 0
+    while curr and curr.data:
+      count +=1
+      curr = curr.next
+    print(count)
 
 
 list1 = SLL()
@@ -83,6 +91,8 @@ list1.printlist()
 print("*******  List 2  **********")
 list2.printlist()
 print("**. Del node **************")
-list1.del_node("Sun")
+list1.del_node("Mon")
+
 print("******** updated ***********")
 list1.printlist()
+list1.list_len()
