@@ -36,14 +36,22 @@ class SLL:
     middle_node.next = new_data.next
   
   def del_node(self, remove_data):
-    curr = self.head
-    while curr and curr.data:
-      print(curr.data)
-      if curr.data == remove_data:
-        curr.data = None
-      curr = curr.next
-
-
+    prev = None
+    head_val = self.head
+    if head_val.data == remove_data:
+      self.head = head_val.next
+      head_val = None
+      return
+    while head_val and head_val.data:
+      print("reached", head_val.data)
+      if head_val.data == remove_data:
+        break
+      prev = head_val
+      head_val = head_val.next
+      
+    if prev:
+      prev.next = head_val.next
+      head_val=None
 
 
 list1 = SLL()
@@ -69,8 +77,12 @@ list2 = SLL()
 
 list2.at_end("Sat")
 list1.at_start("Sun")
-list1.del_node("Mon")
+
 print("*******  List 1  **********")
 list1.printlist()
 print("*******  List 2  **********")
 list2.printlist()
+print("**. Del node **************")
+list1.del_node("Sun")
+print("******** updated ***********")
+list1.printlist()
