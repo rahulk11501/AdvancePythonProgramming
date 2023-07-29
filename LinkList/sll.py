@@ -37,15 +37,11 @@ class SLL:
   
   def del_node(self, remove_data):
     curr = self.head
-    if curr:
+    while curr and curr.data:
+      print(curr.data)
       if curr.data == remove_data:
-        self.head = curr.next
-        curr = None
-    else:
-      while curr:
-        prev = curr
-        curr = prev.next
-
+        curr.data = None
+      curr = curr.next
 
 
 
@@ -74,5 +70,7 @@ list2 = SLL()
 list2.at_end("Sat")
 list1.at_start("Sun")
 list1.del_node("Mon")
+print("*******  List 1  **********")
 list1.printlist()
+print("*******  List 2  **********")
 list2.printlist()
