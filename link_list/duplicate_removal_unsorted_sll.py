@@ -32,12 +32,13 @@ class SLL:
     def remove_dup(self):
         ptr1, ptr2, dup = None, None, None
         ptr1 = self.head
-        while ptr1 and ptr2:
+        while ptr1:
             ptr2 = ptr1
-            while ptr.next:
+            while ptr2 and ptr2.next:
                 if ptr1.data == ptr2.next.data:
                     dup = ptr2.next
                     ptr2.next = ptr2.next.next
+                    dup = None
                 else:
                     ptr2 = ptr2.next
             ptr1 = ptr1.next
