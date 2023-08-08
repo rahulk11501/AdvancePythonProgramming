@@ -1,5 +1,8 @@
 """ Single Link List Implementation """
 
+from link_list.sll_node import Node
+
+
 class SLL:
     """SLL"""
     def __init__(self):

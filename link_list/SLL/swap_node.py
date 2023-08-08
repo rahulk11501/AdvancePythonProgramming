@@ -1,6 +1,7 @@
 """Swap Node Implementation"""
 from typing import Any
 
+
 class Node:
     """ Create Node """
 
@@ -13,7 +14,6 @@ class Node:
 
     def __call__(self, *args: Any, **kwds: Any) -> Any:
         pass
-
 
 
 class SLL():
@@ -38,13 +38,37 @@ class SLL():
         while curr is not None:
             print(curr.data)
             curr = curr.next
-    
-    def swap_node(self, x, y):
-        """" x and y are same """
-        if x == y:
-            pass
-        """"""
-        else
+
+    def swap_node(self, x_data: Any, y_data: Any):
+        """" swap node """
+        if x_data == y_data:
+            return
+        prev_x = None
+        curr_x = self.head
+        while curr_x is not None and curr_x.data is not x_data:
+            prev_x = curr_x
+            curr_x = curr_x.next
+        prev_y = None
+        curr_y = self.head
+        while curr_y is not None and curr_y.data is not y_data:
+            prev_y = curr_y
+            curr_y = curr_y.next
+        if curr_x is None or curr_y is None:
+            return
+
+        if prev_x is not None:
+            prev_x.next = curr_y
+        else:
+            self.head = curr_y
+
+        if prev_y is not None:
+            prev_y.next = curr_x
+        else:
+            self.head = curr_y
+        temp = curr_x.next
+        curr_x.next = curr_y.next
+        curr_y.next = temp
+
 
 def exec_ops():
     """Testing"""
@@ -58,5 +82,9 @@ def exec_ops():
     list1.at_end(Node("Fri"))
     list1.at_end(Node("Sat"))
     list1.printlist()
+    print("SWAP NODE")
+    list1.swap_node("Sun", "Mon")
+    list1.printlist()
+
 
 exec_ops()
